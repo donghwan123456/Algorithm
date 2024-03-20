@@ -1,0 +1,113 @@
+3문제
+메모리 16진수 사용이유
+- 저장공간 낭비 심하고 ...
+
+2진수 16진수로 바꾸는 로직
+16진수를 2진수로 바꾸는 로직
+
+1번
+- 16진수를 2진수로
+- 2진수를 16진수로
+- 이걸 코드로 작성
+
+2번
+- 백트래킹
+- 
+
+3번
+- ex) 1+2+3+4+5 =15   -> 
+3-1 숫자 합 구하는 방법 여러가지 구할건데 시간복잡도 계산 필요
+3-2 스웨아 computational thinking 논리와 증명_수와_표현
+     -> 대우 증명법 등 다양한 증명법으로 증명
+
+
+
+
+# 16진수 2진수로 바꾸기
+```
+T = int(input())
+
+# 10 이 넘는 숫자를 위한 변환기
+converter = {'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
+
+for tc in range(1, T+1):
+    N, number = input().split()
+    # 최종 값 초기화
+    result = ''
+    # 읽는거는 뒤에서 부터 읽어오자
+    for n in number[::-1]:
+        # 변환기 안에 있는 숫자라면 변환해주자
+        if n in converter:
+            n = converter[n]
+        # 변환기 안에 없는 숫자는 str로 들어오기 때문에 변환해주기
+        n = int(n)
+        # 16진수는 무조건 4자리 차지하니 4번 반복해준다.
+        for _ in range(4):
+            result = str(n % 2) + result
+            n //= 2
+
+    print("#{} {}".format(tc, result))
+출처: https://independenceday.tistory.com/entry/SWEA-5185-이진수-python [광보기의 잡동사니:티스토리]
+```
+
+or 
+2진수를 16진수로
+=>
+def binary_to_hex(binary_str):
+    # 2진수를 16진수로 변환하기 위한 딕셔너리를 생성합니다.
+    bin_to_hex = {
+        '0000': '0', '0001': '1', '0010': '2', '0011': '3',
+        '0100': '4', '0101': '5', '0110': '6', '0111': '7',
+        '1000': '8', '1001': '9', '1010': 'A', '1011': 'B',
+        '1100': 'C', '1101': 'D', '1110': 'E', '1111': 'F'
+    }
+
+    # 2진수 문자열의 길이가 4의 배수가 되도록 앞에 0을 채웁니다.
+    while len(binary_str) % 4 != 0:
+        binary_str = '0' + binary_str
+
+    # 변환된 16진수를 저장할 변수를 초기화합니다.
+    hex_str = ''
+    # 2진수 문자열을 4자리씩 끊어서 해당하는 16진수를 가져와 이어붙입니다.
+    for i in range(0, len(binary_str), 4):
+        hex_str += bin_to_hex[binary_str[i:i+4]]
+
+    return hex_str
+
+# 테스트
+binary_number = '101001101'
+hex_number = binary_to_hex(binary_number)
+print(f"{binary_number}의 16진수 표현: {hex_number}")
+
+
+16진수를 2진수로
+=>
+def hex_to_binary(hex_str):
+    # 16진수를 2진수로 변환하기 위한 딕셔너리를 생성합니다.
+    hex_to_bin = {
+        '0': '0000', '1': '0001', '2': '0010', '3': '0011',
+        '4': '0100', '5': '0101', '6': '0110', '7': '0111',
+        '8': '1000', '9': '1001', 'A': '1010', 'B': '1011',
+        'C': '1100', 'D': '1101', 'E': '1110', 'F': '1111'
+    }
+
+    # 변환된 이진수를 저장할 변수를 초기화합니다.
+    binary_str = ''
+    # 입력된 16진수 문자열을 순회하며 각 문자에 대응하는 2진수를 가져와 이어붙입니다.
+    for char in hex_str:
+        binary_str += hex_to_bin[char]
+
+    # 변환된 이진수의 앞에 있는 0을 제거합니다. 단, 0이면 그대로 반환합니다.
+    return binary_str.lstrip('0') if binary_str != '0' else '0'  
+
+# 테스트
+hex_number = '1A3'
+binary_number = hex_to_binary(hex_number)
+print(f"{hex_number}의 2진수 표현: {binary_number}")
+
+
+
+
+시간복잡도 계산
+https://fromnowwon.tistory.com/entry/python-bigO
+
