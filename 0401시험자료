@@ -1,0 +1,95 @@
+pip install -r requirements.txt
+
+migration 안하고 바로 서버 키면 에러
+-> no such table : articles_article
+-> 테이블(db파일에 테이블)이 없음, 테이블 만들어야함
+migrate해야됨
+
+migrate 랑 migration 구분해야됨
+migration : 설계도 작성
+migrate : 설계도 실행하기
+
+
+model에서 form 가져오므로 modeling이 중요함
+
+form : 양식 , front에서 데이터 보낼때 form 양식으로 보내지 않으면 안보내짐
+
+is_valid = 유효성 검사
+
+charfield쓰면서 max_length사용 - 최대 글자수 제한
+
+
+
+form class 적용한 new과정 변화 교안 2/3 
+form - action - 목적지
+     - {%~~~~} 형식으로 보내야 보내짐, 형식 기억하기
+
+token : 쿠키의 종류
+csrf token : 사용자가 악의적으로 위변조 할 수 없게 만든 토큰, {% csrf token %}
+{{form}} - form태그를 다양한 태그로 바꿀 수 있는지 그 종류 찾기
+  - form.as_p
+  form.as_table, div, p, ul
+
+
+Modelform class 정의(교안제목)
+- 구멍뚫어놓고 채우게 하기
+- 대소문자 구분하기 - ex)meta =! Meta/// class뒤에 첫 글자는 대문자로 시작
+ 
+ create 와 update차이점 = 단답식
+
+if else로직 위치 바꾸지 않기
+context의 위치(들여쓰기) 집중해서 공부하기
+
+사용하지 않는 new는 지우기
+
+
+3문제나옴
+urls.py
+어디에다 넣었는지
+urlpatterns (교안 : newpatters)
+
+
+위에는 3/27 수업자료에서 나오는거
+---------------------------------------------------------------------
+
+-option에 어떤것 들 있는지, 자동으로 어떤게 생기는지
+
+db의 article에 있는 자료 지우는 방법
+
+urls.py 화면 보고 옳지 않은 것 고르기
+ex)  
+
+
+admin.py 페이지에서 뭐 추가할때 추가하는 방법
+
+총 32문제
+
+주관식 중 하나
+## 장고는 mtv 패턴 디자인 사용하는데 MTV패턴이 무엇인지
+
+
+
+migrate, startapp, runserver, 등등 나옴
+
+python manage.py startapp articles 시험 나옴
+
+
+
+created_at = models.DateTimeField(auto_now_add = True) - 생성될때마다 자동 추가하는, 게시글 쓸 때마다 추가되는
+                                (auto_now=True)  -  수정할때마다 
+
+
+url 쪼개고 app에다가 만듬 
+프로젝트에는 include 사용
+
+
+all 통해 여러개의 반환 값 갖고 왔는데 query set 나옴
+
+
+article.pk ****
+
+article.id 되는지 보기
+
+def delete(request,pk)
+    article = Aritcle.objects.get(pk=pk)
+    article.delete()
