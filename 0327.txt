@@ -1,0 +1,27 @@
+HTML 'form'  : 사용자로부터 데이터 받기 위해 활용한 방법, 비정상적 요청 필터링 못함
+               - 유효한 데이터인지 확인이 필요
+
+유효성 검사 : 유효성 검사 구현 위해 입력값, 형식, 보안 등 많은것들 고려해야함
+
+Django Form : 사용자 입력 데이터 수집하고 처리 및 유효성 검사 수행 위한 도구
+                -> 유효성 검사 단순화하고 자동화하는 기능 제공
+
+Form class : ---- from Django import forms
+Form rendering options : label, input쌍을 특정 HTML태그로 감싸는 옵션
+
+Widgets : HTML input의 표현을 담당
+
+Form : 사용자 입력 데이터를 db에 저장하지 않을 때
+model form : 사용자 입력 데이터를 db에 저장해야 할 때
+
+
+
+
+
+----------------------------------------------
+form : 양식 , front에서 데이터 보낼때 form 양식으로 보내지 않으면 안보내짐
+
+is_valid = 유효성 검사gi
+charfield쓰면서 max_length사용
+
+widget 사용방법 알기
